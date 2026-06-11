@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>流浪動物的未來 - 數位浪潮下的認養策略與未來展望</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS3 變數定義：依據學術參考文件之色彩計畫（黃綠色至草綠色漸層） */
+        :root {
+            --primary-gradient: linear-gradient(135deg, #a8e063, #56ab2f);
+            --primary-color: #56ab2f;
+            --dark-color: #2c3e50;
+            --light-bg: #f8f9fa;
+            --text-muted: #7f8c8d;
+            --card-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            --transition: all 0.3s ease;
+        }
+
+        /* 基礎樣式重設 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            color: var(--dark-color);
+            background-color: #ffffff;
+            line-height: 1.8;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 導覽列：簡潔化結構，避免干擾使用者任務 */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            font-weight: 500;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        /* 主視覺區（Hero Section）：情感共鳴與行動呼籲 */
+        .hero {
+            padding: 160px 20px 100px;
+            background: var(--light-bg);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            padding: 12px 35px;
+            background: var(--primary-gradient);
+            color: #white;
+            font-weight: 700;
+            border-radius: 50px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(86, 171, 47, 0.3);
+            transition: var(--transition);
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(86, 171, 47, 0.5);
+        }
+
+        /* 通用區塊樣式 */
+        section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--primary-gradient);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* 主題說明網格（結構化佈局） */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid #f1f2f6;
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        /* 深度文獻探討區區塊 */
+        .literature-section {
+            background-color: var(--light-bg);
+            border-radius: 20px;
+            padding: 60px;
+            margin-bottom: 40px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .literature-tag {
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(86, 171, 47, 0.1);
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+        }
+
+        .literature-section h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        .literature-section ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* 數據預測儀表板樣式 */
+        .dashboard {
+            background: var(--dark-color);
+            color: white;
+            border-radius: 20px;
+            padding: 5px;
+            text-align: center;
+        }
+        
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        .metric-card {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .metric-card h4 {
+            color: #a8e063;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        /* 頁尾 */
+        footer {
+            background: var(--dark-color);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* RWD 響應式斷點優化 */
+        @media (max-width: 768px) {
+            .nav-menu { display: none; } /* 簡化行動版介面 */
+            .hero h1 { font-size: 2.2rem; }
+            .literature-section { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">🐾 PawFuture</div>
+            <ul class="nav-menu">
+                <li><a href="#intro">主題說明</a></li>
+                <li><a href="#summary">摘要整理</a></li>
+                <li><a href="#politeness">禮貌溝通</a></li>
+                <li><a href="http://127.0.0.1:8501" target="_blank">AI 預測</a></li>
+                <li><a href="boxplot_colorful.html">認養統計</a></li>
+				<li><a href="taiwan_shelter_map.html">收容熱力圖</a></li>
+				</ul>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>流浪動物的未來：數位浪潮下的認養策略</h1>
+        <p>自 2017 年實施「零安樂死」政策後，全國收容所面臨嚴重超載挑戰。本專題網頁從環境刺激、人際溝通、社群力與機器學習模型出發，全方位探討流浪動物認養的突破關鍵。</p>
+        <a href="#summary" class="btn-cta">探索研究成果</a>
+    </div>
+
+    <section id="intro">
+        <h2 class="section-title">主題說明：收容所的超載與轉型</h2>
+        <div class="grid-3">
+            <div class="card">
+                <span class="card-icon">🚨</span>
+                <h3>零安樂死的現實挑戰</h3>
+                <p>2017 年零撲殺政策上路雖然保障了流浪動物的生命權，卻不可避免地造成全國公立收容所的空間超載，導致留容動物的福祉與生活品質大幅下降。</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">📱</span>
+                <h3>數位媒體的推廣策略</h3>
+                <p>因應實體管道在疫情下的限制，透過 Facebook、Instagram、專屬行動 App 等多元數位渠道進行「認養故事」與豐富多媒體的精準行銷，成為提高浪浪曝光率的當務之急。</p>
+            </div>
+            <div class="card">
+                <span class="card-icon">🤝</span>
+                <h3>信任與關係的建立</h3>
+                <p>流浪動物認養不只是單純的交易，而是一連串人際溝通與互信的建立。本專題透過學術模型分析，找出改善送養人與認養人溝通障礙的具體解方。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="summary" style="background-color: #fafbfc; max-width: 100%;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+            <h2 class="section-title">核心學術摘要整理</h2>
+            <p style="text-align:center; color:var(--text-muted); margin-bottom:40px;">本專題依據 NotebookLM 精選之多篇國內外頂尖碩士論文進行整合編排：</p>
+            
+            <div class="literature-section" style="background: white;">
+                <h3>《流浪動物認養的數位與心理因素整合分析》</h3>
+                <p>本專題高度整合了包含<b>基於 SOR 模型之內在特質研究</b>、<b>Brown 禮貌理論之諮詢溝通感受</b>、<b>社群媒體內容力經營策略</b>、以及<b>行動裝置易視性介面創作（Paw APP）</b>與<b>集成式機器學習認養速度預測</b>等核心文獻，系統化解構影響流浪動物認養率的關鍵因子。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="model">
+        <h2 class="section-title">文獻探討：基於 SOR 模型的內在與環境因素</h2>
+        <div class="literature-section">
+            <span class="literature-tag">環境刺激 (Stimulus) 與 心理反應 (Organism)</span>
+            <h3>社群媒體特性對認養態度的正向顯著影響</h3>
+            <p>研究指出，社群媒體（Facebook、Instagram）的<b>媒體豐富度越豐富，對寵物的認養態度就越高</b>，呈正向顯著相關。能傳遞越多線索（多圖、影片、直播）的媒體可以大幅降低送養資訊的不確定性，提升潛在領養者的領養意願。</p>
+            <br>
+            <h3>從眾效應的反向衝擊</h3>
+            <p>令人驚訝的是，數據發現<b>個人受社會影響的從眾程度越高，對認養的意願反而越低</b>。這是因為社會脈絡下的人際網絡容易對挑選混種犬貓（米克斯）產生觀念制約（大眾普遍仍偏好品種犬、幼犬）。</p>
+        </div>
+
+        <div class="literature-section">
+            <span class="literature-tag">個體內在因素 (Organism) 與 反應意圖 (Response)</span>
+            <h3>高同理心與動物擬人化特質</h3>
+            <p>研究證實，<b>同理心程度與動物擬人化程度較高者，對認養流浪動物的態度就越正面</b>。在人口統計變項中，女性的同理心顯著大於男性。因此，送養文案應著重於能喚起情感共鳴的紀實攝影、動態影音與感性文案，建立人與動物之間的深刻連結。</p>
+        </div>
+    </section>
+
+    <section id="politeness" style="background-color: #fafbfc; max-width: 100%;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+            <h2 class="section-title">文獻探討：認養諮詢與禮貌溝通策略</h2>
+            <div class="grid-3" style="margin-top: 40px;">
+                <div class="card">
+                    <h4>🔍 溝通不良的侵犯行為</h4>
+                    <p style="font-size: 0.95rem; margin-top:10px;">研究顯示，認養諮詢經驗常因送養人的<b>「不禮貌行為」、態度冷漠、或刻意隱瞞動物缺點的「欺瞞行為」</b>而降到低點。這侵犯了認養人期望被尊重、保有隱私與得知真相的「負面面子」與被肯定的「正面面子」，導致認養意願大幅降低。</p>
+                </div>
+                <div class="card">
+                    <h4>💡 負面禮貌策略的應用</h4>
+                    <p style="font-size: 0.95rem; margin-top:10px;">為確認飼養條件，送養人免不了要進行身分核對、家庭訪視等「行為強加」。此時若採取<b>「直接卻委婉」的負面禮貌策略</b>，事先在紙本、網頁上公開透明地告知所需資料，在不暴露隱私的情況下達到公開，認養人受到勉強的感受便會大幅降低。</p>
+                </div>
+                <div class="card">
+                    <h4>❤️ 正面禮貌策略的補償</h4>
+                    <p style="font-size: 0.95rem; margin-top:10px;">送養人若能善用<b>「共同立場策略」</b>（如將飼主稱為爸爸媽媽、將寵物稱為毛孩子、表達彼此對動物的熱情）與<b>「滿足需求策略」</b>，能有效消弭陌生人之間的社會距離，成功彌補面子威脅，建立極佳的整體正面認養評價。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="prediction">
+        <h2 class="section-title">大數據機器學習與預測</h2>
+        <p style="text-align: center; color: var(--text-muted); max-width: 800px; margin: -40px auto 60px;">
+            如何運用現代資工科技加速流浪動物的流通、縮短滯留收容所的時間？透過 AI 集成式學習模型（Ensemble Learning），我們成功找出了影響認養速度預測的關鍵。
+        </p>
+
+        <div class="dashboard">
+            <h3 style="margin-top: 30px; font-weight: 500;">流浪動物認養速度預測 - AI 關鍵特徵重要性儀表板</h3>
+            <div class="dashboard-grid">
+                <div class="metric-card">
+                    <h4>特徵變數 1</h4>
+                    <div class="metric-value">動物年齡區間</div>
+                    <p style="font-size:0.85rem; opacity:0.7; margin-top:5px;">不論在隨機森林、XGBoost、CatBoost 中皆高居影響力前兩名。</p>
+                </div>
+                <div class="metric-card">
+                    <h4>特徵變數 2</h4>
+                    <div class="metric-value">動物是否已絕育</div>
+                    <p style="font-size:0.85rem; opacity:0.7; margin-top:5px;">在所有機器學習集成模型中皆被視為高重要性的核心變數。</p>
+                </div>
+                <div class="metric-card">
+                    <h4>特徵變數 3</h4>
+                    <div class="metric-value">品種是否為純種</div>
+                    <p style="font-size:0.85rem; opacity:0.7; margin-top:5px;">直接反映出大眾對品種犬貓的社會偏好與棄養弊病。</p>
+                </div>
+                <div class="metric-card">
+                    <h4>特徵變數 4</h4>
+                    <div class="metric-value">網頁圖片數量</div>
+                    <p style="font-size:0.85rem; opacity:0.7; margin-top:5px;">多張紀實攝影照片能引發強烈互動與情感連結。</p>
+                </div>
+            </div>
+            <p style="padding: 30px; font-size:0.9rem; color: #a8e063; text-align: left;">
+                <b>🚀 演算法成效：</b>研究結果證實，在各類模型中，以提升法中的<b>類別特徵提升法 (XGBoost) 模型的預測表現最佳</b>，且穩定度最高。將此 AI 模型導入收容所經營，能協助機構優化資源配置，制定最精準的領養推廣策略。
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 流浪動物的未來 專題網頁設計 - 全端前端架構示範</p>
+        <p style="font-size: 0.8rem; margin-top: 10px; color: rgba(255,255,255,0.4);">本網頁架構與內容嚴謹遵循學術文獻之 SOR 模型、禮貌理論、易視性原則與機器學習研究編製。</p>
+    </footer>
+
+</body>
+</html>
